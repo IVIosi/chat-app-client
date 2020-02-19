@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import { hot } from "react-hot-loader";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./routes";
 
-class App extends Component{
-  render(){
-    return(
-      <div className="App">
-        <h1>Welcome!</h1>
-      </div>
-    );
-  }
+export default function App() {
+
+  return (
+    <Router>
+      <Routes />
+    </Router>
+  );
 }
-
-export default hot(module)(App);

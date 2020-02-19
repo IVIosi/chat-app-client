@@ -4,26 +4,43 @@
   "description": "DigiKala Telegram Client",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode development"
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "start": "node ./server.js"
   },
   "author": "Mostafa Sameti",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
     "babel-loader": "^8.0.6",
-    "css-loader": "^1.0.1",
-    "style-loader": "^0.23.1",
+    "compression-webpack-plugin": "^3.1.0",
+    "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
+    "extract-loader": "^4.0.3",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.3",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.0",
+    "babel-polyfill": "^6.26.0",
+    "core-decorators": "^0.20.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-hot-loader": "^4.12.19"
+    "react-router-dom": "^5.1.2"
   }
 }
