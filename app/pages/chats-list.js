@@ -11,6 +11,7 @@ import {
   Divider
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
+import { formatDate } from "@app/helpers";
 
 const useStyles = makeStyles(theme => ({
   titleText: {
@@ -32,7 +33,7 @@ export default function ChatsList() {
       userName: "john_doe",
       chatPreview: {
         content: "Do you have Paris recommendations? Have you ever…",
-        date: "10:30"
+        date: "1582213303"
       }
     },
     {
@@ -41,7 +42,7 @@ export default function ChatsList() {
       userName: "jack_doe",
       chatPreview: {
         content: "Do you have Paris recommendations? Have you ever…",
-        date: "10:30"
+        date: "1582213303"
       }
     },
     {
@@ -50,7 +51,7 @@ export default function ChatsList() {
       userName: "joseph_doe",
       chatPreview: {
         content: "Do you have Paris recommendations? Have you ever…",
-        date: "10:30"
+        date: "1582213303"
       }
     }
   ];
@@ -68,7 +69,7 @@ export default function ChatsList() {
       <List>
         {latestChats.map(chat => (
           <Fragment key={chat.id}>
-          <Link to={`/chat?=${chat.userName}`}>
+          <Link to={`/chat?name=${chat.userName}`}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar alt={chat.name} />
@@ -78,7 +79,7 @@ export default function ChatsList() {
                 secondary={chat.chatPreview.content}
               />
               <ListItemSecondaryAction>
-                {chat.chatPreview.date}
+                {formatDate(chat.chatPreview.date)}
               </ListItemSecondaryAction>
             </ListItem>
             </Link>
