@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import CreateIcon from "@material-ui/icons/Create";
+import ChatIcon from "@material-ui/icons/Chat";
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -16,7 +17,8 @@ export default function CustomFab({ label, iconName, action }) {
   const classes = useStyles();
   const icons = {
     add: AddIcon,
-    create: CreateIcon
+    create: CreateIcon,
+    chat: ChatIcon
   };
   const FabIcon = icons[iconName];
 
