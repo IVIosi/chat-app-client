@@ -39,7 +39,7 @@ export default function ContactsList() {
     >
       <List>
         {contacts.map(contact => (
-          <Link key={contact.id} to={`/chat?name=${contact.userName}`}>
+          <Link key={contact.id} to={`/info?name=${contact.userName}`}>
             <ListItem divider>
               <ListItemAvatar>
                 <Avatar />
