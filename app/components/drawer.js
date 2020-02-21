@@ -66,14 +66,6 @@ export default function CustomDrawer({ toggleDrawer, isOpen }) {
               <ListItemText primary="Contacts" />
             </ListItem>
           </Link>
-          <Link to="/About">
-            <ListItem button key="about">
-              <ListItemIcon>
-                <InfoIcon />
-              </ListItemIcon>
-              <ListItemText primary="About" />
-            </ListItem>
-          </Link>
         </List>
       </div>
     </Drawer>
