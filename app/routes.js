@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import Welcome from "@app/pages";
-import ChatsList from "@app/pages/chats-list";
+import ChatsList from "@app/pages";
 import ContactsList from "@app/pages/contacts/list";
 import UserInfo from "@app/pages/contacts/info";
 import SingleChat from "@app/pages/single-chat";
