@@ -1,28 +1,12 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-require('dotenv').config({
-  path: '.env'
-});
-
-const isDev = process.env.NODE_ENV === 'development';
-
-const envVariables = Object.keys(process.env).reduce((acc, curr) => {
-  return Object.assign({}, acc, {
-    [`__${curr}__`]: JSON.stringify(process.env[curr])
-  });
-}, {});
-
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
-  devtool: isDev ? 'eval-source-map' : 'none',
   entry: "./index.js",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/bundle'
   },
   module: {
     rules: [
@@ -36,21 +20,6 @@ module.exports = {
         use: [
           {
             loader: 'style-loader'
-          },
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'resources/css/[name].css',
-              publicPath: '/',
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'extract-loader',
-            options: {
-              publicPath: '/dist',
-              sourceMap: true
-            }
           },
           {
             loader: 'css-loader',
@@ -75,20 +44,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
         test: /\.(ttf|eot|woff|woff2|png|gif|jpg|jpeg|svg)$/,
         use: ['file-loader']
       }
@@ -96,8 +51,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, '/dist'),
-    port: process.env.PORT,
-    host: process.env.HOST,
+    port: 9000,
     disableHostCheck: true,
     compress: true,
     writeToDisk: true,
@@ -116,7 +70,6 @@ module.exports = {
         collapseWhitespace: true
       }
     }),
-    new webpack.DefinePlugin(envVariables),
     new CompressionPlugin(),
   ]
 };
