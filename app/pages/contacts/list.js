@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import MainAnatomy from "@app/components/main-anatomy";
 import {
   List,
@@ -9,28 +10,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export default function ContactsList() {
-  const contacts = [
-    {
-      id: "1",
-      name: "John Doe",
-      phone: "09123334455",
-      userName: "john_doe"
-    },
-    {
-      id: "2",
-      name: "Jack Doe",
-      phone: "09123334455",
-      userName: "jack_doe"
-    },
-    {
-      id: "3",
-      name: "Joseph Doe",
-      phone: "09123334455",
-      userName: "joseph_doe"
-    }
-  ];
-
+const ContactsList = ({ contacts }) => {
   return (
     <MainAnatomy
       hasBackIcon
@@ -52,3 +32,13 @@ export default function ContactsList() {
     </MainAnatomy>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    contacts: state.contacts,
+  };
+};
+
+const connectedContactsList = connect(mapStateToProps)(ContactsList);
+
+export default connectedContactsList;
