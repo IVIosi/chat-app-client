@@ -1,39 +1,33 @@
 import React from "react";
+import { connect } from "react-redux";
 import MainAnatomy from "@app/components/main-anatomy";
 import {
   Card,
   CardHeader,
   CardContent,
   Typography,
-  Avatar
+  Avatar,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
-export default function UserInfo({ name }) {
+const UserInfo = ({ contactData }) => {
   const history = useHistory();
-
-  const userInfo = {
-    id: "1",
-    name: "John Doe",
-    phone: "09123334455",
-    userName: "john_doe"
-  };
 
   return (
     <MainAnatomy
       hasBackIcon
-      title={userInfo.name}
+      title={contactData.name}
       fab={{
         iconName: "chat",
         label: "Chat",
-        action: () => history.push(`/chat?name=${userInfo.userName}`)
+        action: () => history.push(`/chat?name=${contactData.userName}`),
       }}
     >
       <Card>
         <CardHeader
           avatar={<Avatar />}
-          title={userInfo.name}
-          subheader={`@${userInfo.userName}`}
+          title={contactData.name}
+          subheader={`@${contactData.userName}`}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -45,4 +39,14 @@ export default function UserInfo({ name }) {
       </Card>
     </MainAnatomy>
   );
-}
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    contactData: state.contacts.find((item) => item.userName === ownProps.name),
+  };
+};
+
+const connectedUserInfo = connect(mapStateToProps)(UserInfo);
+
+export default connectedUserInfo;
