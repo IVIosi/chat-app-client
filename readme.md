@@ -1,4 +1,4 @@
-# DigiKala Telegram Client Assignment
+# Chat App Client
 Author: Mostafa Sameti
 
 ## Usage
